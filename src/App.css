@@ -5,7 +5,7 @@
 
 .app{
   background-color: #fafafa;
-  height: 100vh;
+  
 }
 
 .app__header {
@@ -15,6 +15,9 @@
   border-bottom: 1px solid lightgray;
   display: flex;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 .app__headerImage{
   object-fit: contain;

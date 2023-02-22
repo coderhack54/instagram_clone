@@ -207,7 +207,7 @@ function App() {
         </div>
       </div>
 
-      <h1>hello</h1>
+
       <div className="app__posts">
         {posts?.map(({ id, post }) => (
           <Post

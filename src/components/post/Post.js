@@ -25,7 +25,7 @@ const Post = ({ postId, user, username, caption, imageUrl }) => {
 
     addDoc(postCollectionRef, {
       text: comment,
-      username: user.displayName,
+      username: user?.displayName,
       timestamp: serverTimestamp(),
     });
     setComment("");
@@ -73,23 +73,25 @@ const Post = ({ postId, user, username, caption, imageUrl }) => {
           </p>
         ))}
       </div>
-      <form className="post__commentBox">
-        <input
-          type="text"
-          className="post__input"
-          placeholder="Add a comment ..."
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-        />
-        <button
-          className="post__button"
-          disabled={!comment}
-          type="submit"
-          onClick={postComment}
-        >
-          Post
-        </button>
-      </form>
+      {user && (
+        <form className="post__commentBox">
+          <input
+            type="text"
+            className="post__input"
+            placeholder="Add a comment ..."
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
+          <button
+            className="post__button"
+            disabled={!comment}
+            type="submit"
+            onClick={postComment}
+          >
+            Post
+          </button>
+        </form>
+      )}
     </div>
   );
 };
