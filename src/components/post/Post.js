@@ -17,7 +17,7 @@ import { db } from "../../firebase";
 
 const Post = ({ postId, user, username, caption, imageUrl }) => {
   const [comments, setComments] = useState();
-  const [comment, setComment] = useState();
+  const [comment, setComment] = useState("");
 
   const postComment = (event) => {
     event.preventDefault();
@@ -48,6 +48,7 @@ const Post = ({ postId, user, username, caption, imageUrl }) => {
     };
   }, [postId]);
 
+  console.log(comments);
   return (
     <div className="post">
       <div className="post__header">
@@ -66,8 +67,8 @@ const Post = ({ postId, user, username, caption, imageUrl }) => {
         <strong>{username}</strong> : {caption}
       </h4>
       <div className="post__comments">
-        {comments?.map((comment) => (
-          <p>
+        {comments?.map((comment, index) => (
+          <p key={index}>
             <strong>{comment.username}</strong> &nbsp;
             {comment.text}
           </p>
